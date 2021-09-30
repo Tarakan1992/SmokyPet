@@ -3,12 +3,15 @@ using Hommy.ResultModel;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using SmokyPet.Applicaiton;
 using SmokyPet.Application.CQRS;
+using SmokyPet.Infrastructure;
+using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -28,6 +31,7 @@ namespace SmokyPet.Workspace
         {
 
             services.AddControllers();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SmokyPet.Workspace", Version = "v1" });
@@ -41,6 +45,14 @@ namespace SmokyPet.Workspace
             });
 
             services.AddApiResult();
+
+            services.AddDbContext<SmokyPetDbContext>(options =>
+            {
+                options.UseMySql(Configuration.GetConnectionString("DatabaseConnection"),
+                    new MySqlServerVersion(new Version(8, 0, 22)));
+            });
+
+            services.AddScoped<DbContext, SmokyPetDbContext>();
 
             services.AddMediatR(typeof(ApplicationModule));
 

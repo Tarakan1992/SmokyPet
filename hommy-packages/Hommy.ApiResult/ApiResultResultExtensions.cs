@@ -5,26 +5,15 @@ namespace Hommy.ApiResult
 {
     public static class ApiResultResultExtensions
     {
-        public static int GetStatusCode(this ResultBase result)
+        public static int GetStatusCode(this ResultBase result) => result switch
         {
-            if (result.IsSuccess)
-            {
-                return StatusCodes.Status200OK;
-            }
-
-            switch (result.Failure)
-            {
-                case ExceptionFailure _:
-                    return StatusCodes.Status500InternalServerError;
-                case UnauthorizedFailure _:
-                    return StatusCodes.Status401Unauthorized;
-                case ForbiddenFailure _:
-                    return StatusCodes.Status403Forbidden;
-                case NotFoundFailure _:
-                    return StatusCodes.Status404NotFound;
-                default:
-                    return StatusCodes.Status400BadRequest;
-            }
-        }
+            { IsSuccess: true } => StatusCodes.Status200OK,
+            { Failure: ExceptionFailure } => StatusCodes.Status500InternalServerError,
+            { Failure: UnauthorizedFailure } => StatusCodes.Status401Unauthorized,
+            { Failure: ForbiddenFailure } => StatusCodes.Status403Forbidden,
+            { Failure: NotFoundFailure } => StatusCodes.Status404NotFound,
+            { Failure: { } } => StatusCodes.Status400BadRequest,
+            _ => throw new System.NotImplementedException(),
+        };
     }
 }

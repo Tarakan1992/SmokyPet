@@ -14,6 +14,8 @@
         protected ResultBase()
         {
         }
+
+        public virtual object Content => IsSuccess ? null : Failure;
     }
 
     public class Result : ResultBase
@@ -90,6 +92,8 @@
         public Result(Failure failure) : base(failure)
         {
         }
+
+        public override object Content => IsSuccess ? Data : Failure;
 
         public static implicit operator Result<TObject>(TObject value)
         {

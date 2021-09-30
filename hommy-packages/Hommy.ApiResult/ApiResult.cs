@@ -7,16 +7,13 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Hommy.ApiResult
 {
-    public class ApiResult : ActionResult, IStatusCodeActionResult
+    public class ApiResult : ActionResult
     {
-        public ResultBase Value { get; set; }
+        public ResultBase Value { get; }
 
-        public int? StatusCode { get; set; }
-
-        public ApiResult(ResultBase value, int? statusCode = null)
+        public ApiResult(ResultBase value)
         {
             Value = value;
-            StatusCode = statusCode ?? value.GetStatusCode();
         }
 
         public static implicit operator ApiResult(ResultBase value)
@@ -37,9 +34,9 @@ namespace Hommy.ApiResult
     {
         public virtual async Task ExecuteAsync(ActionContext context, ApiResult result)
         {
-            var jsonResult = new JsonResult(result.Value)
+            var jsonResult = new JsonResult(result.Value.Content)
             {
-                StatusCode = result.StatusCode
+                StatusCode = result.Value.GetStatusCode()
             };
 
             await jsonResult.ExecuteResultAsync(context);
