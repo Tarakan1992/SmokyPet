@@ -34,12 +34,33 @@ namespace Hommy.ApiResult
     {
         public virtual async Task ExecuteAsync(ActionContext context, ApiResult result)
         {
-            var jsonResult = new JsonResult(result.Value.Content)
-            {
-                StatusCode = result.Value.GetStatusCode()
-            };
+            ActionResult actionResult;
 
-            await jsonResult.ExecuteResultAsync(context);
+            var statusCode = result.Value.GetStatusCode();
+
+            if (result.Value.IsSuccess)
+            {
+                if(result.Value is IDataResult dataResult)
+                {
+                    actionResult = new ObjectResult(dataResult.GetData())
+                    {
+                        StatusCode = statusCode
+                    };
+                } 
+                else
+                {
+                    actionResult = new StatusCodeResult(statusCode);
+                }
+            }
+            else
+            {
+                actionResult = new ObjectResult(result.Value.Failure)
+                {
+                    StatusCode = statusCode
+                };
+            }
+
+            await actionResult.ExecuteResultAsync(context);
         }
     }
 }

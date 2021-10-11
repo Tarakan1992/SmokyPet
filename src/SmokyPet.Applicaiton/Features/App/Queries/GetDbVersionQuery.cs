@@ -23,8 +23,6 @@ namespace SmokyPet.Applicaiton.Features.App.Queries
 
             public async Task<Result<string>> Handle(Query request, CancellationToken cancellationToken)
             {
-                return Result.ValidationError(new ValidationError("test", "some message"));
-
                 var dbVersion = await _dbContext.Set<DbVersion>().OrderByDescending(x => x.DateApplied).FirstAsync();
 
                 return dbVersion.Version;

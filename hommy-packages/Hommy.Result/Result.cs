@@ -14,8 +14,6 @@
         protected ResultBase()
         {
         }
-
-        public virtual object Content => IsSuccess ? null : Failure;
     }
 
     public class Result : ResultBase
@@ -76,7 +74,7 @@
         }
     }
 
-    public class Result<TObject> : ResultBase
+    public class Result<TObject> : ResultBase, IDataResult
     {
         public TObject Data { get; set; }
 
@@ -93,8 +91,6 @@
         {
         }
 
-        public override object Content => IsSuccess ? Data : Failure;
-
         public static implicit operator Result<TObject>(TObject value)
         {
             return new Result<TObject>(value);
@@ -109,5 +105,15 @@
         {
             return new Result(result.Failure);
         }
+
+        public object GetData()
+        {
+            return Data;
+        }
+    }
+
+    public interface IDataResult
+    {
+        object GetData();
     }
 }

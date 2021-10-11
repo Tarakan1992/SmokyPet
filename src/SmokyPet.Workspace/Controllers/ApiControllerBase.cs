@@ -2,7 +2,6 @@
 
 namespace SmokyPet.Workspace.Controllers
 {
-    [Route("api")]
     [ApiController]
     public abstract class ApiControllerBase : ControllerBase
     {

@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31605.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{32F38C2B-15DF-4CD6-B35B-168E47BEBE45}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmokyPet.Workspace", "src\SmokyPet.Workspace\SmokyPet.Workspace.csproj", "{7602FD5F-B33A-4D84-927A-73F972BB8C19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmokyPet.Workspace", "src\SmokyPet.Workspace\SmokyPet.Workspace.csproj", "{7602FD5F-B33A-4D84-927A-73F972BB8C19}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "db", "db", "{F2610884-B9C7-4D63-9F2E-E86A030295DB}"
 	ProjectSection(SolutionItems) = preProject
@@ -23,7 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "updates", "updates", "{D1AA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmokyPet.Domain", "src\SmokyPet.Domain\SmokyPet.Domain.csproj", "{47E21AC1-F61B-4F44-A9D9-3CE4E4C22680}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmokyPet.Applicaiton", "src\SmokyPet.Applicaiton\SmokyPet.Applicaiton.csproj", "{28E471C3-AF26-4467-8CF8-EC75B31DF2DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmokyPet.Applicaiton", "src\SmokyPet.Applicaiton\SmokyPet.Applicaiton.csproj", "{28E471C3-AF26-4467-8CF8-EC75B31DF2DA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "hommy-packages", "hommy-packages", "{BEA06558-6679-4B99-B586-65BCF908D0A2}"
 EndProject
@@ -31,7 +31,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hommy.ResultModel", "hommy-
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hommy.ApiResult", "hommy-packages\Hommy.ApiResult\Hommy.ApiResult.csproj", "{860BFDF2-9874-47AB-9D94-5BCA18082FB1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmokyPet.Infrastructure", "src\SmokyPet.Infrastructure\SmokyPet.Infrastructure.csproj", "{A48FB599-A93B-442C-B685-A50D692D5009}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmokyPet.Infrastructure", "src\SmokyPet.Infrastructure\SmokyPet.Infrastructure.csproj", "{A48FB599-A93B-442C-B685-A50D692D5009}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hommy.Specification", "hommy-packages\Hommy.Specification\Hommy.Specification.csproj", "{F12A4D7A-B098-4B8C-ABA8-DEF1696760C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{A48FB599-A93B-442C-B685-A50D692D5009}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A48FB599-A93B-442C-B685-A50D692D5009}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A48FB599-A93B-442C-B685-A50D692D5009}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F12A4D7A-B098-4B8C-ABA8-DEF1696760C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F12A4D7A-B098-4B8C-ABA8-DEF1696760C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F12A4D7A-B098-4B8C-ABA8-DEF1696760C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F12A4D7A-B098-4B8C-ABA8-DEF1696760C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,6 +81,7 @@ Global
 		{DCFADD78-9476-47A3-A880-CC8F8D7F4412} = {BEA06558-6679-4B99-B586-65BCF908D0A2}
 		{860BFDF2-9874-47AB-9D94-5BCA18082FB1} = {BEA06558-6679-4B99-B586-65BCF908D0A2}
 		{A48FB599-A93B-442C-B685-A50D692D5009} = {32F38C2B-15DF-4CD6-B35B-168E47BEBE45}
+		{F12A4D7A-B098-4B8C-ABA8-DEF1696760C8} = {BEA06558-6679-4B99-B586-65BCF908D0A2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A0126D2F-7B2A-41FB-8386-31B94229D9CC}

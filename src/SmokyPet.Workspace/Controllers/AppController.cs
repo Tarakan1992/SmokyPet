@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace SmokyPet.Workspace.Controllers
 {
+    [Route("api")]
     public class AppController : ApiControllerBase
     {
         private readonly ISender _sender;

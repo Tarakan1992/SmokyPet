@@ -1,3 +1,4 @@
+using FluentValidation;
 using Hommy.ApiResult;
 using Hommy.ResultModel;
 using MediatR;
@@ -44,8 +45,6 @@ namespace SmokyPet.Workspace
                 options.JsonSerializerOptions.Converters.Add(new FailureJsonConverter());
             });
 
-            services.AddApiResult();
-
             services.AddDbContext<SmokyPetDbContext>(options =>
             {
                 options.UseMySql(Configuration.GetConnectionString("DatabaseConnection"),
@@ -54,9 +53,15 @@ namespace SmokyPet.Workspace
 
             services.AddScoped<DbContext, SmokyPetDbContext>();
 
+            services.AddApiResult();
+
             services.AddMediatR(typeof(ApplicationModule));
 
             services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehavior<,>));
+
+            services.AddValidatorsFromAssembly(typeof(ApplicationModule).Assembly);
+
+            services.AddAutoMapper(typeof(ApplicationModule));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
